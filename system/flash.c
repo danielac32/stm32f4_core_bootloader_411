@@ -178,21 +178,29 @@ void write_flash(uint32_t addr, uint32_t data){
 
 
 char *getUrlTargetFileBoot(){
-	//char *s=full_path("/config/kernel");
-	FILE *fptr;
-	if ((fptr = fopen("/config/kernel","r")) == NULL){
-		kprintf("Error! opening file\n");
-		kprintf("jump app\n");
-		return NULL;
-	}
-	fseek(fptr, 0, SEEK_END);
-	int lsize = ftell(fptr);
-	fseek(fptr, 0, SEEK_SET);
-    char *b= malloc(lsize+1);
-	fread(b,lsize,1, fptr);
- 
-	//kprintf("%s %s\n",t,b);
-	fclose(fptr);
+    //char *s=full_path("/config/kernel");
+    FILE *fptr;
+    char buff[64];
+    int i=0;
+    if ((fptr = fopen("/config/kernel","r")) == NULL){
+        kprintf("Error! opening file\n");
+        kprintf("jump app\n");
+        return NULL;
+    }
+    fseek(fptr, 0, SEEK_END);
+    int lsize = ftell(fptr);
+    fseek(fptr, 0, SEEK_SET);
+    char *b=&buff;// malloc(lsize+1);
+
+    while(!feof(fptr)){
+         buff[i]=fgetc(fptr);
+         i++;
+    }
+    //fread(b,lsize,1, fptr);
+    //b[lsize]=0;
+    //b[lsize+1]=0;
+    //kprintf("%s %s\n",t,b);
+    fclose(fptr);
     return (char *)b;
 }
 
