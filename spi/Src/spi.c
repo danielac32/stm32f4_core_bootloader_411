@@ -64,6 +64,7 @@ void hal_w25q_spi_init(void)
     SPI1->CR1 = SPI_CR1_SSM | SPI_CR1_SSI | SPI_CR1_SPE | SPI_CLK_DIV | SPI_CR1_MSTR;
 
     hw_set_pin(GPIOx(PORT_CS), PIN_CS, 1);
+    SPI1->CR1 = SPI_CR1_SSM | SPI_CR1_SSI | SPI_CR1_SPE | SPI_TRANSFER_CLK_DIV | SPI_CR1_MSTR;
 }
 
 //--------------------------------------------

@@ -2,13 +2,13 @@
 #include <stdint.h>
 
 
-
+//5mb=  5242880 = 10240 sectors 
 #define W25Q80 	0XEF13 	
 #define W25Q16 	0XEF14
 #define W25Q32 	0XEF15
 #define W25Q64 	0XEF16
 #define W25Q128  0XEF17
-#define SPI_FLASH_SECTOR_COUNT   31250 
+#define SPI_FLASH_SECTOR_COUNT   32768 
 #define FLASH_SECTOR_SIZE  512 
 //#define	SPI_FLASH_CS PCout(4)  //选中FLASH	
 				 

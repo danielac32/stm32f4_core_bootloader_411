@@ -246,7 +246,7 @@ void Reset_Handler(void) {
     init_systick(100000000 / 1000);
     DWTInit();
     //uartinit();
-   hal_w25q_spi_init();
+    hal_w25q_spi_init();
     SPI_Flash_Init();
     //kprintf("spiflash : %x\n",SPI_FLASH_TYPE);
    // meminit();
